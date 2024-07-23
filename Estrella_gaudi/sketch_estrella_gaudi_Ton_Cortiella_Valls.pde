@@ -1,6 +1,7 @@
 int y = 1500; //staticValue
 int x = 0; //randomValue
 int a = 1500; //alpha
+float r = random(5, 25);
 
 void settings() { //No se porque pero he usado el void settings, me daba error el codigo si no lo usaba.
   size(y, y);
@@ -19,7 +20,7 @@ void draw() {
   line(y/2-x, y/2, y/2, 0+x);
   line(y/2, y-x, y/2-x, y/2);
   line(y/2, y-x, y/2+x, y/2);
-  x += random(5, 25);
+  x += r;
   a -= x*a/y*2;
 
 }
