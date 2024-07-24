@@ -2,7 +2,7 @@ int y = 1500; // staticValue
 int x = 0; // randomValue
 int a = 1500; // alpha
 float r = random(5, 25);
-int lastResetTime = 0; // Tiempo del último reset
+//int lastResetTime = 0; // Tiempo del último reset
 
 void settings() {
   size(y, y);
@@ -14,7 +14,7 @@ void setup() {
 
 void draw() {
   // resetTime 1000 = 1s
-  if (millis() - lastResetTime >= 20000/r) {
+  if (x >= y/2) {
     resetAll(); // reset
   }
 
@@ -25,6 +25,7 @@ void draw() {
   line(y / 2, y - x, y / 2 + x, y / 2);
   
   x += r;
+  println("x:"+x);
   a -= x * a / y * 2;
 }
 
@@ -32,7 +33,7 @@ void resetAll() {
   x = 0;
   a = 1500;
   r = random(5, 25);
-  lastResetTime = millis();
+  //lastResetTime = millis();
   background(214, 148, 50);
 }
 
