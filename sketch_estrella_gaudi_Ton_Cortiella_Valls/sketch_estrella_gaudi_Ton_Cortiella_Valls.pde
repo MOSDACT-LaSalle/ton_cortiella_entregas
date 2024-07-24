@@ -1,29 +1,41 @@
-int y = 1500; //staticValue
-int x = 0; //randomValue
-int a = 1500; //alpha
+int y = 1500; // staticValue
+int x = 0; // randomValue
+int a = 1500; // alpha
 float r = random(5, 25);
+int lastResetTime = 0; // Tiempo del último reset
 
-void settings() { //No se porque pero he usado el void settings, me daba error el codigo si no lo usaba.
+void settings() {
   size(y, y);
 }
 
 void setup() {
- background(y,y,y);
- //line(0, y/2, y, y/2); //Son opcionales estas lineas, solo era una ayuda visual. :)
- //line(y/2, y, y/2, 0);
-
+  background(214, 148, 50);
 }
 
 void draw() {
-  stroke(0, a*y);
-  line(y/2+x, y/2, y/2, 0+x);
-  line(y/2-x, y/2, y/2, 0+x);
-  line(y/2, y-x, y/2-x, y/2);
-  line(y/2, y-x, y/2+x, y/2);
-  x += r;
-  a -= x*a/y*2;
+  // resetTime 1000 = 1s
+  if (millis() - lastResetTime >= 20000/r) {
+    resetAll(); // reset
+  }
 
+  stroke(0, a * y);
+  line(y / 2 + x, y / 2, y / 2, 0 + x);
+  line(y / 2 - x, y / 2, y / 2, 0 + x);
+  line(y / 2, y - x, y / 2 - x, y / 2);
+  line(y / 2, y - x, y / 2 + x, y / 2);
+  
+  x += r;
+  a -= x * a / y * 2;
 }
+
+void resetAll() {
+  x = 0;
+  a = 1500;
+  r = random(5, 25);
+  lastResetTime = millis();
+  background(214, 148, 50);
+}
+
 
 //He hecho el codigo para que siempre que cambies el valor de y todo se adapte y no se rompa nada, el valor random de X se puede cambiar
 //a cualquier numero que seguira funcionando siempre. :) <3
